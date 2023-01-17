@@ -1,0 +1,36 @@
+{% extends "up-nav.html" %}
+
+{% block content %}
+<style>
+  #img{
+    width: 150px;
+    height: 150px;
+  }
+  #flex-container{
+    display: flex;
+    justify-content: space-evenly;
+  }
+</style>
+<marquee> {{data.title}}</marquee>
+  <audio id="beat" src="{{data.music.url}}"></audio>
+    <div id="flex-container" class="text-center">
+    <img id="img" class="rounded" src="{{data.image.url}}"/>
+    <div style="justify-content: space-evenly" class="container-fluid text-center mt-5 d-flex">
+     <a id="control" class="btn btn-primary" onclick="playBeat()" >Play</a>
+      <a download="" href="{{data.music.url}}" class="btn btn-secondary">Download</a>
+    </div>
+    <script>
+      function playBeat(){
+        let x = document.getElementById("beat")
+        let i = document.getElementById("control");
+        if (i.textContent === "Play"){
+          x.play();
+          i.textContent = "Pause";
+        }else{
+          x.pause()
+          i.textContent = "Playh"
+        }
+        
+      }
+    </script>
+{% endblock %}
